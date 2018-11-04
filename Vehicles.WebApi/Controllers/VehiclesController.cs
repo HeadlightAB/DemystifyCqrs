@@ -27,5 +27,11 @@ namespace Vehicles.WebApi.Controllers
         {
             throw new NotImplementedException();
         }
+
+        [HttpPut("{regno}/mileage")]
+        public void Put(string regno, [FromBody] UpdateMileageRequest request)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
