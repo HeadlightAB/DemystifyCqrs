@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Vehicles.Cqrs.CommandModel;
+
 // ReSharper disable UnusedMember.Global
 
 namespace Vehicles.WebApi
@@ -19,6 +21,9 @@ namespace Vehicles.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddCommandRouting();
+            services.AddTransient<ICommandRouter, CommandRouter>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

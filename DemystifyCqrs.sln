@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicles.WebApi", "Vehicles.WebApi\Vehicles.WebApi.csproj", "{684BF8D9-97A7-4876-B0CA-0B836DD6C1FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vehicles.WebApi", "Vehicles.WebApi\Vehicles.WebApi.csproj", "{684BF8D9-97A7-4876-B0CA-0B836DD6C1FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicles.Cqrs", "Vehicles.Cqrs\Vehicles.Cqrs.csproj", "{FB52BC2C-4CD8-4D0E-8067-3C24FF8DD638}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{684BF8D9-97A7-4876-B0CA-0B836DD6C1FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{684BF8D9-97A7-4876-B0CA-0B836DD6C1FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{684BF8D9-97A7-4876-B0CA-0B836DD6C1FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB52BC2C-4CD8-4D0E-8067-3C24FF8DD638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB52BC2C-4CD8-4D0E-8067-3C24FF8DD638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB52BC2C-4CD8-4D0E-8067-3C24FF8DD638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB52BC2C-4CD8-4D0E-8067-3C24FF8DD638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
