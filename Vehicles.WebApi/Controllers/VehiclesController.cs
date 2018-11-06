@@ -40,7 +40,19 @@ namespace Vehicles.WebApi.Controllers
         [HttpPut("{regno}/mileage")]
         public void Put(string regno, [FromBody] UpdateMileageRequest request)
         {
-            _commandRouter.Handle(new UpdateMileageCommand());
+            EnsureRequest(request);
+
+            _commandRouter.Handle(new UpdateMileageCommand(regno, request.Kilometers));
+        }
+
+        private void EnsureRequest(UpdateMileageRequest request)
+        {
+            Assert(request.Kilometers >= 0, new Exception("Kilometers invalid"));
+        }
+
+        private static void Assert(bool isValid, Exception exception)
+        {
+            if (!isValid) throw exception;
         }
     }
 }

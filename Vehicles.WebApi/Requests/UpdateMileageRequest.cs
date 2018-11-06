@@ -2,5 +2,6 @@
 {
     public class UpdateMileageRequest
     {
+        public int Kilometers { get; set; }
     }
 }
