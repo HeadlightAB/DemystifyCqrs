@@ -17,7 +17,7 @@ namespace Vehicles.Cqrs.CommandModel
         public void Handle<TCommand>(TCommand command) where TCommand : ICommand
         {
             var handlerType = Handlers[typeof(TCommand)];
-            var handler = (ICommandHandler<TCommand>) Activator.CreateInstance(handlerType);
+            var handler = (IHandleCommand<TCommand>) Activator.CreateInstance(handlerType);
 
             handler.Handle(command);
         }

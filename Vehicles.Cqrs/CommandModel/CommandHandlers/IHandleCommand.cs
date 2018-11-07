@@ -2,7 +2,7 @@
 
 namespace Vehicles.Cqrs.CommandModel.CommandHandlers
 {
-    public interface ICommandHandler<in TCommand> where TCommand : ICommand
+    public interface IHandleCommand<in TCommand> where TCommand : ICommand
     {
         void Handle(TCommand command);
     }

@@ -1,13 +1,17 @@
-﻿using System;
-using Vehicles.Cqrs.CommandModel.Commands;
+﻿using Vehicles.Cqrs.CommandModel.Commands;
+using Vehicles.Cqrs.Domain;
 
 namespace Vehicles.Cqrs.CommandModel.CommandHandlers
 {
-    public class UpdateMileageCommandHandler : ICommandHandler<UpdateMileageCommand>
+    public class UpdateMileageCommandHandler : CommandHandler, IHandleCommand<UpdateMileageCommand>
     {
+        private Vehicle _vehicle;
+
         public void Handle(UpdateMileageCommand command)
         {
-            throw new NotImplementedException();
+            LoadAggregate(command.Regno);
+            _vehicle.UpdateMileage(command.Kilometers);
+            Commit();
         }
     }
 }
