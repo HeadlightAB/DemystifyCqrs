@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vehicles.WebApi", "Vehicles
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicles.Cqrs", "Vehicles.Cqrs\Vehicles.Cqrs.csproj", "{FB52BC2C-4CD8-4D0E-8067-3C24FF8DD638}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicles.Data", "Vehicles.Data\Vehicles.Data.csproj", "{1891CCFF-6C44-4749-8B80-6E6A775724D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FB52BC2C-4CD8-4D0E-8067-3C24FF8DD638}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB52BC2C-4CD8-4D0E-8067-3C24FF8DD638}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB52BC2C-4CD8-4D0E-8067-3C24FF8DD638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1891CCFF-6C44-4749-8B80-6E6A775724D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1891CCFF-6C44-4749-8B80-6E6A775724D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1891CCFF-6C44-4749-8B80-6E6A775724D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1891CCFF-6C44-4749-8B80-6E6A775724D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
