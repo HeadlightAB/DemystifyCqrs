@@ -1,15 +1,15 @@
-﻿using Vehicles.Cqrs.Domain;
+﻿using Vehicles.Cqrs.CommandModel.Commands;
+using Vehicles.Cqrs.Domain;
 
 namespace Vehicles.Cqrs.CommandModel.CommandHandlers
 {
-    public abstract class CommandHandler<TAggregateRoot> where TAggregateRoot : AggregateRoot
+    public abstract class CommandHandler<TAggregateRoot, TCommand> 
+        where TAggregateRoot : AggregateRoot 
+        where TCommand : ICommand
     {
         protected TAggregateRoot AggregateRoot;
 
-        protected void LoadAggregate(string id)
-        {
-            //_aggregateRoot = 
-        }
+        public abstract void Handle(TCommand command);
 
         protected void Commit()
         {

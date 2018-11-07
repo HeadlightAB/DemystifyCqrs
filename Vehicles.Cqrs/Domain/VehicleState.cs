@@ -1,14 +1,14 @@
-﻿using Vehicles.Cqrs.Domain;
-using Vehicles.Cqrs.Domain.Events;
+﻿using Vehicles.Cqrs.Domain.Events;
+using Vehicles.Data;
 
-namespace Vehicles.Cqrs.CommandModel.EventHandlers
+namespace Vehicles.Cqrs.Domain
 {
     internal class VehicleState
     {
-        public string Regno { get; private set; }
-        public string Brand { get; private set; }
-        public string Model { get; private set; }
-        public int Year { get; private set; }
+        public string Regno { get; }
+        public string Brand { get; }
+        public string Model { get; }
+        public int Year { get; }
         public int Kilometers { get; private set; }
 
         public VehicleState(Vehicle vehicle)
@@ -22,6 +22,11 @@ namespace Vehicles.Cqrs.CommandModel.EventHandlers
         public void Apply(MileageUpdated @event)
         {
             Kilometers = @event.Kilometers;
+        }
+
+        public void Save()
+        {
+            Store.Save(new Data.Entities.Vehicle(Regno, Brand, Model, Year, Kilometers));
         }
     }
 }

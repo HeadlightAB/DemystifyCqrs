@@ -1,6 +1,4 @@
-﻿using Vehicles.Cqrs.CommandModel.EventHandlers;
-using Vehicles.Cqrs.Domain.Events;
-using Vehicles.Data;
+﻿using Vehicles.Cqrs.Domain.Events;
 
 namespace Vehicles.Cqrs.Domain
 {
@@ -40,12 +38,7 @@ namespace Vehicles.Cqrs.Domain
 
         protected override void CommitState()
         {
-            Store.Save(new Data.Entities.Vehicle(
-                _vehicleState.Regno,
-                _vehicleState.Brand,
-                _vehicleState.Model,
-                _vehicleState.Year,
-                _vehicleState.Kilometers));
+            _vehicleState.Save();
         }
     }
 }
