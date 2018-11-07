@@ -3,14 +3,12 @@ using Vehicles.Cqrs.Domain;
 
 namespace Vehicles.Cqrs.CommandModel.CommandHandlers
 {
-    public class UpdateMileageCommandHandler : CommandHandler, IHandleCommand<UpdateMileageCommand>
+    public class UpdateMileageCommandHandler : CommandHandler<Vehicle>, IHandleCommand<UpdateMileageCommand>
     {
-        private Vehicle _vehicle;
-
         public void Handle(UpdateMileageCommand command)
         {
             LoadAggregate(command.Regno);
-            _vehicle.UpdateMileage(command.Kilometers);
+            AggregateRoot.UpdateMileage(command.Kilometers);
             Commit();
         }
     }

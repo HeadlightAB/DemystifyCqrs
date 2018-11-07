@@ -7,6 +7,7 @@ namespace Vehicles.Data
     public class Store
     {
         private static readonly Dictionary<string, Vehicle> Vehicles = new Dictionary<string, Vehicle>();
+        private static readonly List<object> Events = new List<object>();
 
         public static Vehicle Get(string regno)
         {
@@ -20,22 +21,12 @@ namespace Vehicles.Data
 
         public static void Save(Vehicle vehicle)
         {
-            if (Vehicles.ContainsKey(vehicle.Regno))
-            {
-                throw new DuplicateRegnoException();
-            }
-
-            Vehicles.Add(vehicle.Regno, vehicle);
+           Vehicles[vehicle.Regno] = vehicle;
         }
 
-        public static void Update(Vehicle vehicle)
+        public static void Append(object[] events)
         {
-            if (!Vehicles.ContainsKey(vehicle.Regno))
-            {
-                throw new RegnoNotFoundException();
-            }
-
-            Vehicles[vehicle.Regno] = vehicle;
+            Events.AddRange(events);
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿namespace Vehicles.Cqrs.Domain.Events
 {
-    public class UpdateMileageEvent : DomainEvent
+    public class MileageUpdated : DomainEvent
     {
         public string Regno { get; }
         public int Kilometers { get; }
 
-        public UpdateMileageEvent(string regno, int kilometers) : base()
+        public MileageUpdated(string regno, int kilometers)
         {
             Regno = regno;
             Kilometers = kilometers;
