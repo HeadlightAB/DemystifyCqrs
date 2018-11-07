@@ -13,6 +13,7 @@ namespace Vehicles.Cqrs.CommandModel
         internal static void RegisterHandlers()
         {
             Handlers.Add(typeof(UpdateMileageCommand), typeof(UpdateMileageCommandHandler));
+            Handlers.Add(typeof(RegisterVehicleCommand), typeof(RegisterVehicleCommandHandler));
         }
 
         public void Handle<TCommand>(TCommand command) where TCommand : ICommand

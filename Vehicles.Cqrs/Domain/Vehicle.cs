@@ -31,10 +31,18 @@ namespace Vehicles.Cqrs.Domain
             }
         }
 
+        public void RegisterNew()
+        {
+            Apply(new VehiceRegistered(Regno, Brand, Model, Year));
+        }
+
         public void On(MileageUpdated @event)
         {
             _vehicleState.Apply(@event);
         }
+
+        public void On(VehiceRegistered @event)
+        {}
 
         protected override void CommitState()
         {

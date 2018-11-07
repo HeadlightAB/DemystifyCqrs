@@ -32,9 +32,11 @@ namespace Vehicles.WebApi.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] CreateVehiceRequest request)
+        public void Post([FromBody] RegisterVehiceRequest request)
         {
-            throw new NotImplementedException();
+            EnsureRequest(request);
+
+            _commandRouter.Handle(new RegisterVehicleCommand(request.Regno, request.Brand, request.Model, request.Year));
         }
 
         [HttpPut("{regno}/mileage")]
@@ -43,6 +45,14 @@ namespace Vehicles.WebApi.Controllers
             EnsureRequest(request);
 
             _commandRouter.Handle(new UpdateMileageCommand(regno, request.Kilometers));
+        }
+
+        private void EnsureRequest(RegisterVehiceRequest request)
+        {
+            Assert(!string.IsNullOrWhiteSpace(request.Regno), new Exception("Regno missing"));
+            Assert(!string.IsNullOrWhiteSpace(request.Brand), new Exception("Brand missing"));
+            Assert(!string.IsNullOrWhiteSpace(request.Model), new Exception("Model missing"));
+            Assert(request.Year > 0, new Exception("Year missing"));
         }
 
         private void EnsureRequest(UpdateMileageRequest request)
