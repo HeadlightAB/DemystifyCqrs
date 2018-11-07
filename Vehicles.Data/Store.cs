@@ -8,6 +8,16 @@ namespace Vehicles.Data
     {
         private static readonly Dictionary<string, Vehicle> Vehicles = new Dictionary<string, Vehicle>();
 
+        public static Vehicle Get(string regno)
+        {
+            if (!Vehicles.ContainsKey(regno))
+            {
+                throw new RegnoNotFoundException();
+            }
+
+            return Vehicles[regno];
+        }
+
         public static void Save(Vehicle vehicle)
         {
             if (Vehicles.ContainsKey(vehicle.Regno))
