@@ -1,6 +1,6 @@
 ﻿namespace Vehicles.Cqrs.Domain.Events
 {
-    public class VehiceRegistered : DomainEvent
+    internal class VehiceRegistered : DomainEvent
     {
         public string Regno { get; }
         public string Brand { get; }

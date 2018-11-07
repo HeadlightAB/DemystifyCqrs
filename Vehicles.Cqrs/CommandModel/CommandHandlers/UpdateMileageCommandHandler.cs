@@ -3,7 +3,7 @@ using Vehicles.Cqrs.Domain;
 
 namespace Vehicles.Cqrs.CommandModel.CommandHandlers
 {
-    public class UpdateMileageCommandHandler : CommandHandler<Vehicle, UpdateMileageCommand>
+    internal class UpdateMileageCommandHandler : CommandHandler<Vehicle, UpdateMileageCommand>
     {
         public override void Handle(UpdateMileageCommand command)
         {

@@ -3,7 +3,7 @@ using Vehicles.Cqrs.Domain;
 
 namespace Vehicles.Cqrs.CommandModel.CommandHandlers
 {
-    public abstract class CommandHandler<TAggregateRoot, TCommand> 
+    internal abstract class CommandHandler<TAggregateRoot, TCommand> 
         where TAggregateRoot : AggregateRoot 
         where TCommand : ICommand
     {

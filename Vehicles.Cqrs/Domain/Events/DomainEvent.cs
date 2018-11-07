@@ -2,7 +2,7 @@
 
 namespace Vehicles.Cqrs.Domain.Events
 {
-    public abstract class DomainEvent
+    internal abstract class DomainEvent
     {
         public DateTimeOffset Timestamp { get; }
 

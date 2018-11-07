@@ -2,7 +2,7 @@
 
 namespace Vehicles.Cqrs.Domain
 {
-    public class Vehicle : AggregateRoot
+    internal class Vehicle : AggregateRoot
     {
         public string Regno { get; }
         public string Brand { get; }

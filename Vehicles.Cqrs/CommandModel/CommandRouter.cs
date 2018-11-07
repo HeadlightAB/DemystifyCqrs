@@ -21,8 +21,7 @@ namespace Vehicles.Cqrs.CommandModel
             var handlerType = Handlers[typeof(TCommand)];
             var handler = Activator.CreateInstance(handlerType);
 
-            handler.GetType()
-                .GetMethod(nameof(CommandHandler<AggregateRoot, ICommand>.Handle)).Invoke(handler, new object[] {command});
+            handler.GetType().GetMethod(nameof(CommandHandler<AggregateRoot, ICommand>.Handle)).Invoke(handler, new object[] {command});
         }
     }
 }

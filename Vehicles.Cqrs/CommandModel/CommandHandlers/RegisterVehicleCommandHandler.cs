@@ -5,7 +5,7 @@ using Vehicles.Data.Exceptions;
 
 namespace Vehicles.Cqrs.CommandModel.CommandHandlers
 {
-    class RegisterVehicleCommandHandler : CommandHandler<Vehicle, RegisterVehicleCommand>
+    internal class RegisterVehicleCommandHandler : CommandHandler<Vehicle, RegisterVehicleCommand>
     {
         public override void Handle(RegisterVehicleCommand command)
         {

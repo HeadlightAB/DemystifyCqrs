@@ -1,6 +1,6 @@
 ﻿namespace Vehicles.Cqrs.Domain.Events
 {
-    public class MileageUpdated : DomainEvent
+    internal class MileageUpdated : DomainEvent
     {
         public string Regno { get; }
         public int Kilometers { get; }

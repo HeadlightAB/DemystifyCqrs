@@ -5,11 +5,11 @@ using Vehicles.Data;
 
 namespace Vehicles.Cqrs.Domain
 {
-    public abstract class AggregateRoot
+    internal abstract class AggregateRoot
     {
         private readonly List<DomainEvent> _events = new List<DomainEvent>();
 
-        public void Apply(DomainEvent @event)
+        protected void Apply(DomainEvent @event)
         {
             _events.Add(@event);
         }
