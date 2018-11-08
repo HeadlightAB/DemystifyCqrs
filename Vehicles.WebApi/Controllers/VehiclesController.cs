@@ -47,7 +47,7 @@ namespace Vehicles.WebApi.Controllers
             _commandRouter.Handle(new UpdateMileageCommand(regno, request.Kilometers));
         }
 
-        private void EnsureRequest(RegisterVehiceRequest request)
+        private static void EnsureRequest(RegisterVehiceRequest request)
         {
             Assert(!string.IsNullOrWhiteSpace(request.Regno), new Exception("Regno missing"));
             Assert(!string.IsNullOrWhiteSpace(request.Brand), new Exception("Brand missing"));
@@ -55,7 +55,7 @@ namespace Vehicles.WebApi.Controllers
             Assert(request.Year > 0, new Exception("Year missing"));
         }
 
-        private void EnsureRequest(UpdateMileageRequest request)
+        public void EnsureRequest(UpdateMileageRequest request)
         {
             Assert(request.Kilometers >= 0, new Exception("Kilometers invalid"));
         }
