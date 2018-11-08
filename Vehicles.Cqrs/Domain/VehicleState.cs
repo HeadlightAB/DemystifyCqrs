@@ -5,10 +5,10 @@ namespace Vehicles.Cqrs.Domain
 {
     internal class VehicleState
     {
-        public string Regno { get; }
-        public string Brand { get; }
-        public string Model { get; }
-        public int Year { get; }
+        public string Regno { get; private set; }
+        public string Brand { get; private set; }
+        public string Model { get; private set; }
+        public int Year { get; private set; }
         public int Kilometers { get; private set; }
 
         public VehicleState(Vehicle vehicle)
@@ -22,6 +22,14 @@ namespace Vehicles.Cqrs.Domain
         public void Apply(MileageUpdated @event)
         {
             Kilometers = @event.Kilometers;
+        }
+
+        public void Apply(VehiceRegistered @event)
+        {
+            Regno = @event.Regno;
+            Brand = @event.Brand;
+            Model = @event.Model;
+            Year = @event.Year;
         }
 
         public void Save()

@@ -42,7 +42,9 @@ namespace Vehicles.Cqrs.Domain
         }
 
         public void On(VehiceRegistered @event)
-        {}
+        {
+            _vehicleState.Apply(@event);
+        }
 
         protected override void CommitState()
         {
