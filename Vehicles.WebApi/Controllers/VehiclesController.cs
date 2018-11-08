@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Vehicles.Core.Exceptions;
 using Vehicles.Cqrs.CommandModel;
 using Vehicles.Cqrs.CommandModel.Commands;
 using Vehicles.WebApi.Models;
@@ -49,15 +50,15 @@ namespace Vehicles.WebApi.Controllers
 
         private static void EnsureRequest(RegisterVehiceRequest request)
         {
-            Assert(!string.IsNullOrWhiteSpace(request.Regno), new Exception("Regno missing"));
-            Assert(!string.IsNullOrWhiteSpace(request.Brand), new Exception("Brand missing"));
-            Assert(!string.IsNullOrWhiteSpace(request.Model), new Exception("Model missing"));
+            Assert(!string.IsNullOrWhiteSpace(request.Regno), new BadRequestException("Regno missing"));
+            Assert(!string.IsNullOrWhiteSpace(request.Brand), new BadRequestException("Brand missing"));
+            Assert(!string.IsNullOrWhiteSpace(request.Model), new BadRequestException("Model missing"));
             Assert(request.Year > 0, new Exception("Year missing"));
         }
 
         public void EnsureRequest(UpdateMileageRequest request)
         {
-            Assert(request.Kilometers >= 0, new Exception("Kilometers invalid"));
+            Assert(request.Kilometers >= 0, new BadRequestException("Kilometers invalid"));
         }
 
         private static void Assert(bool isValid, Exception exception)

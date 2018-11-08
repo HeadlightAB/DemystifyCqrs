@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Vehicles.Core\Vehicles.Core.csproj" />
     <ProjectReference Include="..\Vehicles.Cqrs\Vehicles.Cqrs.csproj" />
   </ItemGroup>
 
