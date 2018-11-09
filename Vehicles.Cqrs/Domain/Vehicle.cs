@@ -1,4 +1,5 @@
 ﻿using Vehicles.Cqrs.Domain.Events;
+using Vehicles.Cqrs.Domain.Exceptions;
 
 namespace Vehicles.Cqrs.Domain
 {
@@ -27,7 +28,14 @@ namespace Vehicles.Cqrs.Domain
         {
             if (Kilometers != kilometers)
             {
-                Apply(new MileageUpdated(Regno, kilometers));
+                if (kilometers > 0)
+                {
+                    Apply(new MileageUpdated(Regno, kilometers));
+                }
+                else
+                {
+                    throw new BusinessException("Mileage in kilometers must be greater than 0");
+                }
             }
         }
 
