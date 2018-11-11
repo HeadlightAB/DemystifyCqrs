@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Vehicles.Cqrs.CommandModel;
+using Vehicles.Data;
 
 // ReSharper disable UnusedMember.Global
 
@@ -24,6 +25,7 @@ namespace Vehicles.WebApi
 
             services.AddCommandRouting();
             services.AddTransient<ICommandRouter, CommandRouter>();
+            services.AddScoped<IStorage, InMemoryStorage>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

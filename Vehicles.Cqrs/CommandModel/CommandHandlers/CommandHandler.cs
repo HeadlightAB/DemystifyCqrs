@@ -1,5 +1,6 @@
 ﻿using Vehicles.Cqrs.CommandModel.Commands;
 using Vehicles.Cqrs.Domain;
+using Vehicles.Data;
 
 namespace Vehicles.Cqrs.CommandModel.CommandHandlers
 {
@@ -7,13 +8,20 @@ namespace Vehicles.Cqrs.CommandModel.CommandHandlers
         where TAggregateRoot : AggregateRoot 
         where TCommand : ICommand
     {
+        protected readonly IStorage Storage;
+
         protected TAggregateRoot AggregateRoot;
+
+        protected CommandHandler(IStorage storage)
+        {
+            Storage = storage;
+        }
 
         public abstract void Handle(TCommand command);
 
         protected void Commit()
         {
-            AggregateRoot.CommitEvents();
+            AggregateRoot.CommitEvents(Storage);
         }
     }
 }

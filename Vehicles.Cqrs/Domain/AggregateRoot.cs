@@ -14,7 +14,7 @@ namespace Vehicles.Cqrs.Domain
             _events.Add(@event);
         }
 
-        internal void CommitEvents()
+        internal void CommitEvents(IStorage storage)
         {
             var eventHandlingMethods = GetType().GetMethods().Where(x =>
                 x.Name == "On" &&
@@ -27,11 +27,11 @@ namespace Vehicles.Cqrs.Domain
                     .ForEach(x => x.Invoke(this, new object[] {domainEvent}));
             }
 
-            CommitState();
-            Store.Append(_events.ToArray());
+            CommitState(storage);
+            storage.Append(_events.ToArray());
             _events.Clear();
         }
 
-        protected abstract void CommitState();
+        protected abstract void CommitState(IStorage storage);
     }
 }

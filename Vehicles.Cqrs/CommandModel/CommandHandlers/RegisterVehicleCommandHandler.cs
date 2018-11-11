@@ -1,12 +1,17 @@
 ﻿using System;
 using Vehicles.Cqrs.CommandModel.Commands;
 using Vehicles.Cqrs.Domain;
+using Vehicles.Data;
 using Vehicles.Data.Exceptions;
 
 namespace Vehicles.Cqrs.CommandModel.CommandHandlers
 {
     internal class RegisterVehicleCommandHandler : CommandHandler<Vehicle, RegisterVehicleCommand>
     {
+        public RegisterVehicleCommandHandler(IStorage storage) : base(storage)
+        {
+        }
+
         public override void Handle(RegisterVehicleCommand command)
         {
             EnsureVehicleUnique(command);
@@ -18,7 +23,7 @@ namespace Vehicles.Cqrs.CommandModel.CommandHandlers
         {
             try
             {
-                Data.Store.Get(command.Regno);
+                Storage.Get(command.Regno);
             }
             catch (RegnoNotFoundException)
             {

@@ -32,9 +32,9 @@ namespace Vehicles.Cqrs.Domain
             Year = @event.Year;
         }
 
-        public void Save()
+        public void Save(IStorage storage)
         {
-            Store.Save(new Data.Entities.Vehicle(Regno, Brand, Model, Year, Kilometers));
+            storage.Save(new Data.Entities.Vehicle(Regno, Brand, Model, Year, Kilometers));
         }
     }
 }

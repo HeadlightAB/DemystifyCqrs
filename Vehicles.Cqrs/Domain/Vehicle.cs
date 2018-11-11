@@ -1,5 +1,6 @@
 ﻿using Vehicles.Cqrs.Domain.Events;
 using Vehicles.Cqrs.Domain.Exceptions;
+using Vehicles.Data;
 
 namespace Vehicles.Cqrs.Domain
 {
@@ -54,9 +55,9 @@ namespace Vehicles.Cqrs.Domain
             _vehicleState.Apply(@event);
         }
 
-        protected override void CommitState()
+        protected override void CommitState(IStorage storage)
         {
-            _vehicleState.Save();
+            _vehicleState.Save(storage);
         }
     }
 }
