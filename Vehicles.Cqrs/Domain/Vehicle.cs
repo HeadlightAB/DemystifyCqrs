@@ -12,8 +12,6 @@ namespace Vehicles.Cqrs.Domain
         public int Year { get; }
         public int Kilometers { get; }
 
-        private readonly VehicleState _vehicleState;
-
         public Vehicle(string regno, string brand, string model, int year, int kilometers)
         {
             Regno = regno;
@@ -22,7 +20,7 @@ namespace Vehicles.Cqrs.Domain
             Year = year;
             Kilometers = kilometers;
 
-            _vehicleState = new VehicleState(this);
+            State = new VehicleState(this);
         }
 
         public void UpdateMileage(int kilometers)
@@ -47,17 +45,12 @@ namespace Vehicles.Cqrs.Domain
 
         public void On(MileageUpdated @event)
         {
-            _vehicleState.Apply(@event);
+            State.Apply(@event);
         }
 
         public void On(VehiceRegistered @event)
         {
-            _vehicleState.Apply(@event);
-        }
-
-        protected override void CommitState(IStorage storage)
-        {
-            _vehicleState.Save(storage);
+            State.Apply(@event);
         }
     }
 }

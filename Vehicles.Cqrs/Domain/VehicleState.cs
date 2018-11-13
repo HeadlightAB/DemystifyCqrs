@@ -3,7 +3,7 @@ using Vehicles.Data;
 
 namespace Vehicles.Cqrs.Domain
 {
-    internal class VehicleState
+    internal class VehicleState : IState
     {
         public string Regno { get; private set; }
         public string Brand { get; private set; }
@@ -19,12 +19,12 @@ namespace Vehicles.Cqrs.Domain
             Year = vehicle.Year;
         }
 
-        public void Apply(MileageUpdated @event)
+        private void Apply(MileageUpdated @event)
         {
             Kilometers = @event.Kilometers;
         }
 
-        public void Apply(VehiceRegistered @event)
+        private void Apply(VehiceRegistered @event)
         {
             Regno = @event.Regno;
             Brand = @event.Brand;
@@ -35,6 +35,11 @@ namespace Vehicles.Cqrs.Domain
         public void Save(IStorage storage)
         {
             storage.Save(new Data.Entities.Vehicle(Regno, Brand, Model, Year, Kilometers));
+        }
+
+        public void Apply(DomainEvent @event)
+        {
+            Apply(@event as dynamic);
         }
     }
 }

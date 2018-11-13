@@ -8,6 +8,7 @@ namespace Vehicles.Cqrs.Domain
     internal abstract class AggregateRoot
     {
         private readonly List<DomainEvent> _events = new List<DomainEvent>();
+        protected IState State;
 
         protected void Apply(DomainEvent @event)
         {
@@ -32,6 +33,9 @@ namespace Vehicles.Cqrs.Domain
             _events.Clear();
         }
 
-        protected abstract void CommitState(IStorage storage);
+        private void CommitState(IStorage storage)
+        {
+            State.Save(storage);
+        }
     }
 }
